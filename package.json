@@ -1,1 +1,18 @@
 
+{
+  "name": "halal-ventures-fuel-system",
+  "version": "1.0.0",
+  "description": "Halal Ventures Fuel Management System",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run electron:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "electron:dev": "cd electron && npm run dev",
+    "build": "cd electron && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "keywords": ["fuel", "management", "boda", "uganda"],
+  "author": "Halal Ventures",
+  "license": "MIT"
+}
