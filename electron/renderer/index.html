@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Ventures - Fuel Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>🚗 Halal Ventures Fuel System</h1>
+            <div class="user-info">
+                <span>Welcome, Admin</span>
+            </div>
+        </header>
 
+        <div class="stats-cards">
+            <div class="stat-card">
+                <h3>Total Riders</h3>
+                <div class="number" id="totalRiders">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Stations</h3>
+                <div class="number" id="activeStations">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Transactions</h3>
+                <div class="number" id="todayTransactions">0</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <h2>👥 Riders Management</h2>
+                <button class="btn btn-primary" onclick="loadRiders()">Load Riders</button>
+            </div>
+            <div class="table-container">
+                <table id="ridersTable">
+                    <thead>
+                        <tr>
+                            <th>Rider ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Boda Plate</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ridersTableBody">
+                        <!-- Riders will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>📱 QR Transaction</h2>
+            <button class="btn btn-success" onclick="startQRTransaction()">Start QR Transaction</button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/qr-scanner.js"></script>
+</body>
+              </html>
