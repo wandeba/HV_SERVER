@@ -1,10 +1,6 @@
 class API {
     constructor() {
-        // For local development
-        this.baseURL = 'http://localhost:3001';
-        
-        // For production (update with your Render URL after deployment)
-        // this.baseURL = 'https://your-app.onrender.com';
+        this.baseURL = 'https://your-app.railway.app'; // Update with your Railway URL
     }
 
     async request(endpoint, options = {}) {
