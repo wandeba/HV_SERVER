@@ -1,0 +1,48 @@
+name: Build Electron App for Linux
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: '**/package.json'
+
+    - name: Install root dependencies
+      run: npm install
+
+    - name: Install Server dependencies
+      run: cd server && npm install
+
+    - name: Install Electron dependencies
+      run: cd electron && npm install
+
+    - name: Build Electron App
+      run: npm run build
+      env:
+        # Use your actual API URL
+        VITE_API_URL: https://sandbox-acess.onrender.com
+
+    - name: Upload Linux build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-electron-build
+        path: |
+          electron/dist/
+          !electron/dist/**/*.exe     # Exclude Windows builds
+          !electron/dist/**/*.dmg     # Exclude macOS builds
+        if-no-files-found: error
