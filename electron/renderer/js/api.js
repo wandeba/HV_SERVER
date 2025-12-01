@@ -1,6 +1,8 @@
 class API {
     constructor() {
      this.baseURL = 'https://sandbox-acess.onrender.com';   // Update with your Railway URL
+    // Use environment variable or fallback
+this.baseURL = process.env.VITE_API_URL || 'https://sandbox-acess.onrender.com';
     }
 
     async request(endpoint, options = {}) {
