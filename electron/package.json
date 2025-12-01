@@ -9,8 +9,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron-builder": "^24.0.0"
-    "electron": "^30.0.0",
+    "electron-builder": "^24.0.0",
+    "electron": "^30.0.0"
   },
   "author": "wandeba"
 }
