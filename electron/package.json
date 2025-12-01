@@ -1,19 +1,15 @@
-
 {
   "name": "halal-ventures-electron",
   "version": "1.0.0",
-  "description": "A desktop application for Halal Ventures built with Electron.js, 
-  offering users a platform to explore and engage with halal-compliant investment opportunities, startups, and ventures.",
+  "description": "A desktop application for Halal Ventures built with Electron.js, offering users a platform to explore and engage with halal-compliant investment opportunities, startups, and ventures.",
   "main": "main.js",
   "scripts": {
     "dev": "electron .",
     "build": "electron-builder"
   },
-  "dependencies": {
-   
-  },
+  "dependencies": {},
   "devDependencies": {
     "electron-builder": "^24.0.0"
-    "author": "wandeba"
-  }
+  },
+  "author": "wandeba"
 }
