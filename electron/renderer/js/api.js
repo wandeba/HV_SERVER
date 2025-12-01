@@ -1,6 +1,6 @@
 class API {
     constructor() {
-        this.baseURL = 'https://halal-ventures-api-d9kq.onrender.com'; // Update with your Railway URL
+        this.baseURL =; // Update with your Railway URL
     }
 
     async request(endpoint, options = {}) {
