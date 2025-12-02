@@ -1,16 +1,19 @@
-name: Build Electron App for Linux
+name: Build Electron App (Linux, Windows, Mac)
 
 on:
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -20,8 +23,8 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
-        cache-dependency-path: '**/package.json'
 
+    # Install dependencies
     - name: Install root dependencies
       run: npm install
 
@@ -31,18 +34,17 @@ jobs:
     - name: Install Electron dependencies
       run: cd electron && npm install
 
+    # Build Electron App
     - name: Build Electron App
       run: npm run build
       env:
-        # Use your actual API URL
         VITE_API_URL: https://sandbox-acess.onrender.com
 
-    - name: Upload Linux build artifacts
+    # Upload Artifacts
+    - name: Upload App Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: linux-electron-build
+        name: build-${{ matrix.os }}
         path: |
-          electron/dist/
-          !electron/dist/**/*.exe     # Exclude Windows builds
-          !electron/dist/**/*.dmg     # Exclude macOS builds
+          electron/dist/**
         if-no-files-found: error
