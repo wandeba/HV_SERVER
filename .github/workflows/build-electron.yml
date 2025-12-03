@@ -1,0 +1,50 @@
+name: Build Electron App (Linux, Windows, Mac)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    # Install dependencies
+    - name: Install root dependencies
+      run: npm install
+
+    - name: Install Server dependencies
+      run: cd server && npm install
+
+    - name: Install Electron dependencies
+      run: cd electron && npm install
+
+    # Build Electron App
+    - name: Build Electron App
+      run: npm run build
+      env:
+        VITE_API_URL: https://sandbox-acess.onrender.com
+
+    # Upload Artifacts
+    - name: Upload App Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.os }}
+        path: |
+          electron/dist/**
+        if-no-files-found: error

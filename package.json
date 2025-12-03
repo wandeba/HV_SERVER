@@ -11,21 +11,7 @@
   "devDependencies": {
     "concurrently": "^8.2.0"
   },
-  "keywords": [
-    "fuel",
-    "management",
-    "boda",
-    "uganda"
-  ],
-  "author": "Halal Ventures",
-  "license": "MIT",
-  "main": "main.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wandeba/HV_SERVER.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wandeba/HV_SERVER/issues"
-  },
-  "homepage": "https://github.com/wandeba/HV_SERVER#readme"
+  "keywords": ["fuel", "management", "boda", "uganda"],
+  "author": "wandeba",
+  "license": "MIT"
 }
